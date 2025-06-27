@@ -10,11 +10,20 @@ The LESs were kindly run by Linnea Huusko with a similar setup as in [Huusko et 
 - $`\Gamma = 3`$ K/km case: Nek5000 (TKE SGS closure), Nek5000 (Vreman SGS closure), and NCAR code.
 - $`\Gamma = 9`$ K/km case: Nek5000 (TKE SGS closure)
 
-The raw data for the $`\Gamma = 3`$ K/km case can be found here. Each Nek5000 simulation took approximately 20000 core-hours to run (on the Dardel cluster).
+The raw data for the $`\Gamma = 3`$ K/km case can be found [here](https://bolin.su.se/data/huusko-2025-les-nek5000-1). Each Nek5000 simulation took approximately 20000 core-hours to run (on the Dardel cluster).
 
 ## EARSM
 
 A Python solver (described in the paper) was used for the EARSM simulations. Each simulation took approximately 25 seconds to run on a Apple M4 pro laptop.
+
+## Plots
+
+A python script, `plot_data.py`, is included.
+
+![](U_and_V.png)
+
+
+
 
 
 ## References
