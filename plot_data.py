@@ -29,11 +29,24 @@ plt.rcParams.update({
 
 
 '''
-    Make subplots for article comparing LES and RANS.
+    Make subplots for article comparing LES, EARSM and EVM.
     
     Python environment:
         conda create -n blm2025 python spyder numpy scipy xarray matplotlib
 '''
+
+
+###############################################
+### Load EVM data
+###############################################
+with open('EVM/cnbl_Gam0.001.pkl', 'rb') as fp:
+    e1 = pickle.load(fp)
+with open('EVM/cnbl_Gam0.003.pkl', 'rb') as fp:
+    e3 = pickle.load(fp)
+with open('EVM/cnbl_Gam0.009.pkl', 'rb') as fp:
+    e9 = pickle.load(fp)
+evm = [e1, e3, e9]
+
 
 ###############################################
 ### Load EARSM data
@@ -97,6 +110,7 @@ ziLES = np.array(ziLES)
 #########################################################################
 ############# Plots ###########################################
 #########################################################################
+evmsty = {'color': 'b', 'linewidth': 3, 'linestyle': 'dotted'}
 fisty = {'color': 'c', 'linewidth': 3, 'linestyle': 'dashed'}
 blrsty = {'color': 'c', 'linewidth': 3, 'linestyle': 'dotted'}
 bllsty = {'color': "#e6308a", 'linewidth': 3, 'linestyle': 'dotted'}
@@ -137,6 +151,9 @@ for i in range(len(rans)):
     lesT = lesTs[i]
     plt.gcf().axes[i].plot(lesT['U'],lesT['z'],**ltsty)
     plt.gcf().axes[i].plot(lesT['V'],lesT['z'],**ltsty)
+    e = evm[i]
+    plt.gcf().axes[i].plot(e['msol']['U'],e['y']['yc'],**evmsty)
+    plt.gcf().axes[i].plot(e['msol']['V'],e['y']['yc'],**evmsty)
     c = rans[i]
     plt.gcf().axes[i].plot(c['msol']['U'],c['y']['yc'],**fisty)
     plt.gcf().axes[i].plot(c['msol']['V'],c['y']['yc'],**fisty)
@@ -156,6 +173,8 @@ plt.gcf().axes[1].plot(lesV['winddir'],lesV['z'],**lvsty)
 for i in range(len(rans)):
     lesT = lesTs[i]
     plt.gcf().axes[i].plot(lesT['winddir'],lesT['z'],**ltsty)
+    e = evm[i]
+    plt.gcf().axes[i].plot(180/np.pi*np.arctan2(e['msol']['V'][1:],e['msol']['U'][1:]),e['y']['yc'][1:],**evmsty)
     c = rans[i]
     plt.gcf().axes[i].plot(180/np.pi*np.arctan2(c['msol']['V'][1:],c['msol']['U'][1:]),c['y']['yc'][1:],**fisty)
 
@@ -167,6 +186,8 @@ plt.gcf().axes[1].plot(lesV['T'],lesV['z'],**lvsty)
 for i in range(len(rans)):
     lesT = lesTs[i]
     plt.gcf().axes[i].plot(lesT['T'],lesT['z'],**ltsty)
+    e = evm[i]
+    plt.gcf().axes[i].plot(e['msol']['T'],e['y']['yc'],**evmsty)    
     c = rans[i]
     plt.gcf().axes[i].plot(c['msol']['T'],c['y']['yc'],**fisty)    
 
@@ -178,6 +199,8 @@ plt.gcf().axes[1].plot(lesV['K'],lesV['z'],**lvsty)
 for i in range(len(rans)):
     lesT = lesTs[i]
     plt.gcf().axes[i].plot(lesT['K'],lesT['z'],**ltsty)
+    e = evm[i]
+    plt.gcf().axes[i].plot(e['msol']['K'],e['y']['yc'],**evmsty)    
     c = rans[i]
     plt.gcf().axes[i].plot(c['msol']['K'],c['y']['yc'],**fisty)    
 
@@ -191,6 +214,8 @@ for i in range(len(rans)):
     lesT = lesTs[i]
     ax = plt.gcf().axes[i]
     plt.gcf().axes[i].plot(lesT['Kt']/em2,lesT['z'],**ltsty)
+    e = evm[i]
+    plt.gcf().axes[i].plot(e['msol']['Kt']/em2,e['y']['yc'],**evmsty)  
     c = rans[i]
     plt.gcf().axes[i].plot(c['msol']['Kt']/em2,c['y']['yc'],**fisty)  
     # BL height (based on dTdz)
@@ -213,6 +238,9 @@ for i in range(len(rans)):
     lesT = lesTs[i]
     plt.gcf().axes[i].plot(lesT['uw'],lesT['z'],**ltsty)
     plt.gcf().axes[i].plot(lesT['vw'],lesT['z'],**ltsty)
+    e = evm[i]
+    plt.gcf().axes[i].plot(e['msol']['uw_out'],e['y']['yc'],**evmsty)
+    plt.gcf().axes[i].plot(e['msol']['vw_out'],e['y']['yc'],**evmsty)
     c = rans[i]
     plt.gcf().axes[i].plot(c['msol']['uw_out'],c['y']['yc'],**fisty)
     plt.gcf().axes[i].plot(c['msol']['vw_out'],c['y']['yc'],**fisty)
@@ -230,6 +258,8 @@ plt.gcf().axes[1].plot(lesV['uv'],lesV['z'],**lvsty)
 for i in range(len(rans)):
     lesT = lesTs[i]
     plt.gcf().axes[i].plot(lesT['uv'],lesT['z'],**ltsty)
+    e = evm[i]
+    plt.gcf().axes[i].plot(e['msol']['uv_out'],e['y']['yc'],**evmsty)
     c = rans[i]
     plt.gcf().axes[i].plot(c['msol']['uv_out'],c['y']['yc'],**fisty)
 
@@ -244,6 +274,9 @@ for i in range(len(rans)):
     lesT = lesTs[i]
     plt.gcf().axes[i].plot(lesT['uu'],lesT['z'],**ltsty)
     plt.gcf().axes[i].plot(lesT['ww'],lesT['z'],**ltsty)
+    e = evm[i]
+    plt.gcf().axes[i].plot(e['msol']['uu_out'],e['y']['yc'],**evmsty)
+    plt.gcf().axes[i].plot(e['msol']['ww_out'],e['y']['yc'],**evmsty)
     c = rans[i]
     plt.gcf().axes[i].plot(c['msol']['uu_out'],c['y']['yc'],**fisty)
     plt.gcf().axes[i].plot(c['msol']['ww_out'],c['y']['yc'],**fisty)
@@ -263,6 +296,8 @@ plt.gcf().axes[1].plot(lesV['wt']/em2,lesV['z'],**lvsty)
 for i in range(len(rans)):
     lesT = lesTs[i]
     plt.gcf().axes[i].plot(lesT['wt']/em2,lesT['z'],**ltsty)
+    e = evm[i]
+    plt.gcf().axes[i].plot(e['msol']['wt_out']/em2,e['y']['yc'],**evmsty)    
     c = rans[i]
     plt.gcf().axes[i].plot(c['msol']['wt_out']/em2,c['y']['yc'],**fisty)    
 plt.gcf().axes[0].set_xticks([-0.4,-0.2,0])
@@ -281,6 +316,9 @@ for i in range(len(rans)):
     lesT = lesTs[i]
     plt.gcf().axes[i].plot(lesT['ut']/em2,lesT['z'],**ltsty)
     plt.gcf().axes[i].plot(lesT['vt']/em2,lesT['z'],**ltsty)
+    e = evm[i]
+    plt.gcf().axes[i].plot(e['msol']['ut_out']/em2,e['y']['yc'],**evmsty) 
+    plt.gcf().axes[i].plot(e['msol']['vt_out']/em2,e['y']['yc'],**evmsty)  
     c = rans[i]
     plt.gcf().axes[i].plot(c['msol']['ut_out']/em2,c['y']['yc'],**fisty) 
     plt.gcf().axes[i].plot(c['msol']['vt_out']/em2,c['y']['yc'],**fisty)  
