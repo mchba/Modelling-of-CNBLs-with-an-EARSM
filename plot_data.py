@@ -223,6 +223,16 @@ plt.gcf().axes[1].annotate(text=r'$\overline{vw}$',xy=(0.7,0.1),xycoords='axes f
 plt.gcf().axes[2].annotate(text=r'$\overline{uw}$',xy=(0.4,0.3),xycoords='axes fraction')
 plt.gcf().axes[2].annotate(text=r'$\overline{vw}$',xy=(0.7,0.1),xycoords='axes fraction')
 
+# Horizontal shear stres
+mplot(xlabel=r'$\overline{uv}$ [m$^{2}$ s$^{-2}$]',xlim=[-0.05,0.2],varloc=0.02)
+plt.gcf().axes[1].plot(lesN['uv'],lesN['z'],**lnsty)
+plt.gcf().axes[1].plot(lesV['uv'],lesV['z'],**lvsty)
+for i in range(len(rans)):
+    lesT = lesTs[i]
+    plt.gcf().axes[i].plot(lesT['uv'],lesT['z'],**ltsty)
+    c = rans[i]
+    plt.gcf().axes[i].plot(c['msol']['uv_out'],c['y']['yc'],**fisty)
+
 
 # Normal stresses
 mplot(xlabel=r'$\overline{uu}$ and $\overline{ww}$ [m$^{2}$ s$^{-2}$]',xlim=[0,0.9],varloc=0.1)
