@@ -1,6 +1,6 @@
 # Modelling-of-CNBLs-with-an-EARSM
 
-Data used in the article Modelling of conventionally neutral boundary layers with an explicit algebraic Reynolds stress model<sup>[1](#Baungaard2025)</sup>.
+Data used in the article "Modelling of conventionally neutral boundary layers with an explicit algebraic Reynolds stress model" [(Baungaard & Wallin, 2025)](https://www.researchsquare.com/article/rs-7989013/v1)<sup>[1](#Baungaard2025)</sup>.
 
 ## LES
 
@@ -28,7 +28,7 @@ A python script, `plot_data.py`, is included.
 
 ## References
 
-<a name="Baungaard2025">[1]</a> Mads Baungaard & Stefan Wallin (2025), *Modelling of conventionally neutral boundary layers with an explicit algebraic Reynolds stress model*, Under review for Boundary-Layer Metereology
+<a name="Baungaard2025">[1]</a> Mads Baungaard & Stefan Wallin (2025), [*Modelling of conventionally neutral boundary layers with an explicit algebraic Reynolds stress model*](https://www.researchsquare.com/article/rs-7989013/v1), Under review for Boundary-Layer Metereology
 
 <a name="Huusko2025">[2]</a> Linnea Huusko et al. (2025), [*Large eddy simulation of canonical atmospheric boundary layer flows with the spectral element method in Nek5000*](https://doi.org/10.1029/2025MS005233), Journal of Advances in Modeling Earth Systems
 
