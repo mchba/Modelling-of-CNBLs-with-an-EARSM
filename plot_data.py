@@ -13,6 +13,8 @@ plt.rcParams['ytick.right'] = False
 plt.rcParams['ytick.direction'] = 'out'
 plt.rcParams['grid.linewidth'] = 1.5
 plt.rcParams['axes.grid']=True
+# Set DPI to 300 for high-quality figures
+plt.rcParams['figure.dpi'] = 300
 yd = {'rotation': 0, 'ha': 'right', 'va': 'center'}
 plt.rcParams.update({
     'axes.linewidth': 1.5,          # Thickness of the axes (spines)
@@ -72,9 +74,12 @@ lesV = xr.open_dataset("LES/neutral_gamma0003_vreman.nc")
 # NCAR
 lesN = xr.open_dataset("LES/neutral_gamma0003_ncar.nc")
 # Linestyles
-lnsty    = {'color': 'k', 'label': 'NCAR', 'linewidth': 3}
-lvsty    = {'color': "#89ce00", 'label': 'Vreman', 'linewidth': 3}
-ltsty    = {'color': "#e6308a", 'label': 'Deardorf', 'linewidth': 3}
+#lnsty    = {'color': 'k', 'label': 'NCAR', 'linewidth': 3}
+#lvsty    = {'color': "#89ce00", 'label': 'Vreman', 'linewidth': 3}
+#ltsty    = {'color': "#e6308a", 'label': 'Deardorf', 'linewidth': 3}
+lnsty    = {'color': 'lightgrey', 'label': 'NCAR', 'linewidth': 3}
+lvsty    = {'color': 'darkgrey', 'label': 'Vreman', 'linewidth': 3}
+ltsty    = {'color': 'k', 'label': 'Deardorf', 'linewidth': 3}
 
 
 #########################################################################
@@ -220,8 +225,8 @@ for i in range(len(rans)):
     plt.gcf().axes[i].plot(c['msol']['Kt']/em2,c['y']['yc'],**fisty)  
     # BL height (based on dTdz)
     ax.set_xlim(ax.get_xlim())
-    ax.plot(ax.get_xlim(),[ziLES[i],ziLES[i]],**bllsty)
-    ax.plot(ax.get_xlim(),[ziRANS[i],ziRANS[i]],**blrsty)
+    #ax.plot(ax.get_xlim(),[ziLES[i],ziLES[i]],**bllsty)
+    #ax.plot(ax.get_xlim(),[ziRANS[i],ziRANS[i]],**blrsty)
     
 plt.gcf().axes[0].xaxis.set_minor_locator(plt.MultipleLocator(0.02))
 plt.gcf().axes[1].xaxis.set_minor_locator(plt.MultipleLocator(0.1))
