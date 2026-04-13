@@ -74,12 +74,12 @@ lesV = xr.open_dataset("LES/neutral_gamma0003_vreman.nc")
 # NCAR
 lesN = xr.open_dataset("LES/neutral_gamma0003_ncar.nc")
 # Linestyles
-#lnsty    = {'color': 'k', 'label': 'NCAR', 'linewidth': 3}
-#lvsty    = {'color': "#89ce00", 'label': 'Vreman', 'linewidth': 3}
-#ltsty    = {'color': "#e6308a", 'label': 'Deardorf', 'linewidth': 3}
-lnsty    = {'color': 'lightgrey', 'label': 'NCAR', 'linewidth': 3}
-lvsty    = {'color': 'darkgrey', 'label': 'Vreman', 'linewidth': 3}
-ltsty    = {'color': 'k', 'label': 'Deardorf', 'linewidth': 3}
+lnsty    = {'color': 'k', 'label': 'NCAR', 'linewidth': 3}
+lvsty    = {'color': "#89ce00", 'label': 'Vreman', 'linewidth': 3}
+ltsty    = {'color': "#e6308a", 'label': 'Deardorf', 'linewidth': 3}
+#lnsty    = {'color': 'lightgrey', 'label': 'NCAR', 'linewidth': 3}
+#lvsty    = {'color': 'darkgrey', 'label': 'Vreman', 'linewidth': 3}
+#ltsty    = {'color': 'k', 'label': 'Deardorf', 'linewidth': 3}
 
 
 #########################################################################
